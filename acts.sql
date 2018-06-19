@@ -16,16 +16,15 @@ INSERT INTO agent (agentid,firstName,lastName,email,age) VALUES ('003','Bart','S
 
 
 CREATE TABLE commtbl(
-	agentid VARCHAR(15) NOT NULL,
-	saleDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	id VARCHAR(15) NOT NULL,
 	itemSold VARCHAR(100),
-	itemAmount INT,
-	comm_rate INT,
-	total_comm INT
-	PRIMARY KEY(agentid)
+	itemAmount INT(100),
+	comm_rate INT(100),
+	total_comm INT(100),
+	PRIMARY KEY(id)
 );
 
-INSERT INTO commtbl (agentid,saleDate,itemSold,itemAmount,comm_rate,total_comm) VALUES ('001','','HOVERDRONE',10000,5,500);
-INSERT INTO commtbl (agentid,saleDate,itemSold,itemAmount,comm_rate,total_comm) VALUES ('002','','ALPINEROVER',10000,5,500);
-INSERT INTO commtbl (agentid,saleDate,itemSold,itemAmount,comm_rate,total_comm) VALUES ('003','','SPLASHGRILL',10000,5,500);
-INSERT INTO commtbl (agentid,saleDate,itemSold,itemAmount,comm_rate,total_comm) VALUES ('004','','PROPELLER SHAFT',10000,5,500);
+INSERT INTO commtbl (id,itemSold,itemAmount,comm_rate,total_comm) VALUES ('001','HOVERDRONE',10000,5,500);
+INSERT INTO commtbl (id,itemSold,itemAmount,comm_rate,total_comm) VALUES ('002','ALPINEROVER',10000,5,500);
+INSERT INTO commtbl (id,itemSold,itemAmount,comm_rate,total_comm) VALUES ('003','SPLASHGRILL',10000,5,500);
+INSERT INTO commtbl (id,itemSold,itemAmount,comm_rate,total_comm) VALUES ('004','PROPELLER SHAFT',10000,5,500);
