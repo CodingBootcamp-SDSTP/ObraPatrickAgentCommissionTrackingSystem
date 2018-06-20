@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<web-app>
+	<display-name>actsapp</display-name>
+	<description>Agent Commission Tracking System</description>
+	<servlet>
+		<servlet-name>Agents</servlet-name>
+		<servlet-class>AllAgentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Agents</servlet-name>
+		<url-pattern>/allagents</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
