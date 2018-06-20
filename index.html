@@ -4,13 +4,47 @@
 	</head>
 	<body>
 		<div>
+		<script>
+			window.onload = function() {
+				var sessionid = "";
+				var login = document.getElementById('submit');
+				login.onclick = function() {
+					let un = document.getElementById('username').value;
+					let pw = document.getElementById('password').value;
+					let rq = new XMLHttpRequest();
+					rq.onreadystatechange = function() {
+						if(rq.readystate == 4) {
+							sessionid = rq.responseText;
+						}
+					}
+					rq.open("GET", "/login?username="+un+"&password="+pw, true);
+					rq.send();
+				};
+				var assets = document.getElementById('assets');
+				assets.onclick = function() {
+					let rq = new XMLHttpRequest();
+					rq.onreadystatechange = function() {
+						if(rq.readyState == 4) {
+							let container = document.getElementById('container');
+							container.innerHTML = "";
+							container.innerHTML = rq.responseText;
+						}
+					}
+					rq.open("GET", "/agent?id="+sessionid, true);
+					rq.send();
+				};
+			}
+		</script>
+		</div>
+		<form method="POST" action="validateservlet">
+		<div id="container">
 			<label for="uname"><b>Username</b></label> 
 			<input type="text" placeholder="Enter Username" name="uname" required/>
 		</div>
 		<div>
 			<label for="pass"><b>Password</b></label>
 			<input type="password" placeholder="Enter password" name="pass" required/>
-		</div>
+		</div></form>
 		<div>
 			<button type="submit">Login</button>
 			<button type="submit">Cancel</button>
@@ -18,9 +52,10 @@
 			<div>
 				<h1>Agent Commission Tracking Portal</h1>
 				<p>Welcome to the Agent Commission Tracking Portal Web App!</p>
-				<button type="button" class="btn btn-link">Show all Agents</button><br>
+				<a href ="/actsapp/allagents"><button type="button" class="btn btn-link">Show all Agents</button></a><br>
 				<button type="button" class="btn btn-link">Show all Company</button><br>
 				<button type="button" class="btn btn-link">Show all Referrals</button> 
+				<p><a href="/actsapp/allagents" id="agent">Agents</a></p>
 			</div>
 	</body>
 </html>
